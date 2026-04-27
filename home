@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zag Cabonce — Web & Graphic Designer / Developer · Philippines</title>
+<meta name="description" content="Zaguetth (Zag) Cabonce — a Philippines-based Web & Graphic Designer and Developer turning ideas into websites that look amazing, load fast, and bring in results. 6+ years, 5+ countries, working with clients from the US, UK, Canada, Taiwan and New Zealand.">
+<meta property="og:title" content="Zag Cabonce — Web & Graphic Designer / Developer">
+<meta property="og:description" content="Helping businesses around the world turn ideas into websites that look amazing, load fast, and actually bring in results.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+/* ───────────────────────────────────────────────
+   ZAG · Portfolio
+   Editorial / Confident / Tropical-Ink
+─────────────────────────────────────────────── */
+
+:root{
+  --bg: #F1EBDF;
+  --bg-tint: #E8DFCC;
+  --ink: #14110D;
+  --ink-soft: #2A2520;
+  --paper: #FBF7EE;
+  --accent: #D9472C;          /* warm tomato/terracotta */
+  --accent-deep: #A6311E;
+  --moss: #243B2A;            /* deep forest moment */
+  --muted: #8B7E68;
+  --line: #C9BBA0;
+  --shadow: 0 28px 60px -28px rgba(20,17,13,.35);
+
+  --display: 'Fraunces', 'Times New Roman', serif;
+  --sans: 'Instrument Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --max: 1400px;
+  --pad: clamp(20px, 4vw, 56px);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{
+  font-family:var(--sans);
+  background:var(--bg);
+  color:var(--ink);
+  font-size:17px;
+  line-height:1.55;
+  overflow-x:hidden;
+  /* Subtle paper grain via SVG noise */
+  background-image:
+    radial-gradient(circle at 0% 0%, rgba(217,71,44,.05), transparent 40%),
+    radial-gradient(circle at 100% 100%, rgba(36,59,42,.05), transparent 50%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.08 0 0 0 0 0.07 0 0 0 0 0.05 0 0 0 0.06 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+::selection{background:var(--accent);color:var(--paper)}
+
+/* Custom cursor (desktop only) */
+.cursor{position:fixed;top:0;left:0;width:14px;height:14px;border-radius:50%;background:var(--accent);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .25s,height .25s,background .25s,opacity .2s;mix-blend-mode:multiply;opacity:0}
+.cursor.is-hover{width:60px;height:60px;background:var(--ink);opacity:.92}
+.cursor.is-hover::after{content:attr(data-label);position:absolute;inset:0;display:grid;place-items:center;color:var(--paper);font:500 10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase}
+@media (hover:hover) and (pointer:fine){body.has-cursor{cursor:none}body.has-cursor a,body.has-cursor button{cursor:none}.cursor.show{opacity:.85}}
+
+/* ── Top Ticker ─────────────────────────── */
+.ticker{
+  background:var(--ink);color:var(--paper);
+  padding:10px 0;font:500 11px/1 var(--mono);
+  letter-spacing:.18em;text-transform:uppercase;
+  overflow:hidden;border-bottom:1px solid var(--ink);
+  position:relative;z-index:50;
+}
+.ticker__track{display:flex;gap:48px;width:max-content;animation:ticker 38s linear infinite}
+.ticker__item{display:flex;gap:48px;flex-shrink:0}
+.ticker__item span{display:inline-flex;align-items:center;gap:14px}
+.ticker__item span::after{content:'✦';color:var(--accent);font-size:14px}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── Nav ─────────────────────────── */
+.nav{
+  position:sticky;top:0;z-index:40;
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  background:rgba(241,235,223,.78);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s,background .3s;
+}
+.nav.scrolled{border-color:var(--line)}
+.nav__inner{
+  max-width:var(--max);margin:0 auto;padding:18px var(--pad);
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+}
+.logo{
+  display:flex;align-items:center;gap:10px;
+  font:900 italic 28px/1 var(--display);
+  font-variation-settings:"opsz" 144,"SOFT" 30;
+  letter-spacing:-.04em;
+}
+.logo__dot{width:10px;height:10px;border-radius:50%;background:var(--accent);animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.4);opacity:.55}}
+
+.nav__links{display:flex;gap:30px;font:500 13px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase}
+.nav__links a{position:relative;padding:6px 0;transition:color .25s}
+.nav__links a::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:right;transition:transform .35s cubic-bezier(.7,0,.2,1)}
+.nav__links a:hover::after{transform:scaleX(1);transform-origin:left}
+
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:13px 22px;
+  background:var(--ink);color:var(--paper);
+  font:500 12px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;
+  border-radius:999px;
+  transition:transform .35s cubic-bezier(.7,0,.2,1),background .3s;
+  white-space:nowrap;
+}
+.btn:hover{background:var(--accent);transform:translateY(-2px)}
+.btn .arr{display:inline-block;transition:transform .35s}
+.btn:hover .arr{transform:translateX(4px)}
+.btn--ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+.btn--ghost:hover{background:var(--ink);color:var(--paper)}
+
+@media(max-width:880px){
+  .nav__links{display:none}
+}
+
+/* ── Layout helpers ───────────────────────── */
+.section{max-width:var(--max);margin:0 auto;padding:120px var(--pad);position:relative}
+@media(max-width:720px){.section{padding:80px var(--pad)}}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:12px;
+  font:500 12px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;
+  color:var(--accent);
+}
+.eyebrow::before{content:'';width:32px;height:1px;background:var(--accent)}
+
+/* ── Hero ─────────────────────────── */
+.hero{
+  max-width:var(--max);margin:0 auto;padding:64px var(--pad) 0;
+  position:relative;overflow:visible;
+}
+.hero__top{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  gap:24px;margin-bottom:40px;flex-wrap:wrap;
+}
+.hero__meta{display:flex;flex-direction:column;gap:6px;font:500 12px/1.5 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+.hero__meta b{color:var(--ink);font-weight:700}
+.live{display:inline-flex;align-items:center;gap:8px}
+.live__dot{width:8px;height:8px;border-radius:50%;background:#3aaa6a;box-shadow:0 0 0 0 rgba(58,170,106,.7);animation:live 2s ease-out infinite}
+@keyframes live{0%{box-shadow:0 0 0 0 rgba(58,170,106,.6)}80%,100%{box-shadow:0 0 0 14px rgba(58,170,106,0)}}
+
+.hero__title{
+  font-family:var(--display);
+  font-weight:300;
+  font-style:italic;
+  font-variation-settings:"opsz" 144,"SOFT" 80;
+  font-size:clamp(72px, 16.5vw, 280px);
+  line-height:.86;
+  letter-spacing:-.045em;
+  color:var(--ink);
+  margin-bottom:28px;
+}
+.hero__title .accent{color:var(--accent);font-style:italic;font-weight:900}
+.hero__title .star{
+  display:inline-block;color:var(--accent);font-size:.45em;
+  vertical-align:.45em;margin:0 .1em;font-style:normal;
+  animation:spin 14s linear infinite;
+  font-weight:300;
+}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.hero__title .stroke{
+  -webkit-text-stroke:2px var(--ink);
+  color:transparent;
+  font-weight:900;font-style:italic;
+}
+
+.hero__row{
+  display:grid;grid-template-columns:1.2fr 1fr;gap:60px;
+  padding:40px 0;border-top:1px solid var(--ink);align-items:start;
+}
+@media(max-width:880px){.hero__row{grid-template-columns:1fr;gap:32px}}
+.hero__lede{
+  font:400 22px/1.4 var(--display);
+  font-variation-settings:"opsz" 60;
+  max-width:34ch;
+}
+.hero__lede em{font-style:italic;color:var(--accent)}
+.hero__sub{display:flex;flex-direction:column;gap:24px;align-items:flex-start}
+.hero__caption{font:500 12px/1.5 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.hero__cta{display:flex;gap:14px;flex-wrap:wrap}
+
+/* Stats strip */
+.stats{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:40px;
+  padding:40px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+  margin-top:40px;
+}
+@media(max-width:720px){.stats{grid-template-columns:repeat(2,1fr);gap:28px}}
+.stat__num{
+  font:300 italic clamp(48px,7vw,96px)/1 var(--display);
+  font-variation-settings:"opsz" 144,"SOFT" 50;
+  letter-spacing:-.04em;color:var(--ink);
+}
+.stat__num sup{font-size:.45em;color:var(--accent);vertical-align:super;font-style:normal;font-weight:700}
+.stat__lbl{font:500 11px/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:8px;max-width:18ch}
+
+/* ── Marquee skills ───────────────────────── */
+.marquee{
+  background:var(--ink);color:var(--paper);
+  padding:34px 0;overflow:hidden;
+  border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+  margin-top:80px;
+}
+.marquee__track{display:flex;gap:64px;width:max-content;animation:ticker 28s linear infinite}
+.marquee__item{
+  font:300 italic clamp(48px,7vw,88px)/1 var(--display);
+  font-variation-settings:"opsz" 144,"SOFT" 100;
+  letter-spacing:-.03em;
+  white-space:nowrap;display:inline-flex;align-items:center;gap:64px;flex-shrink:0;
+}
+.marquee__item::after{content:'✺';color:var(--accent);font-style:normal;font-weight:300}
+
+/* ── About ─────────────────────────── */
+.about{display:grid;grid-template-columns:1fr 1.15fr;gap:80px;align-items:start}
+@media(max-width:1000px){.about{grid-template-columns:1fr;gap:48px}}
+.about__monogram{position:relative;aspect-ratio:1/1.1;background:var(--paper);border:1px solid var(--ink);overflow:hidden;box-shadow:var(--shadow)}
+.about__monogram svg{position:absolute;inset:0;width:100%;height:100%}
+.about__monogram::before{
+  content:'';position:absolute;inset:0;
+  background:
+    repeating-linear-gradient(45deg,transparent 0 22px,rgba(20,17,13,.04) 22px 23px);
+  pointer-events:none;
+}
+.about__chips{
+  position:absolute;left:18px;top:18px;
+  display:flex;flex-wrap:wrap;gap:6px;max-width:60%;
+}
+.about__chip{font:500 10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;background:var(--ink);color:var(--paper);padding:6px 10px;border-radius:999px}
+.about__cred{
+  position:absolute;right:18px;bottom:18px;
+  font:500 italic 13px/1.3 var(--display);
+  font-variation-settings:"opsz" 30;
+  text-align:right;color:var(--ink);background:var(--paper);padding:8px 12px;border:1px solid var(--ink);
+}
+.about__head{
+  font:300 italic clamp(40px,5.6vw,76px)/.95 var(--display);
+  font-variation-settings:"opsz" 144,"SOFT" 60;
+  letter-spacing:-.035em;margin:24px 0 28px;
+}
+.about__head em{color:var(--accent);font-weight:600}
+.about__body{display:flex;flex-direction:column;gap:18px;font-size:18px;color:var(--ink-soft);max-width:54ch}
+.about__body strong{color:var(--ink);font-weight:600}
+.about__traits{
+  display:flex;flex-wrap:wrap;gap:8px;margin-top:24px;
+}
+.trait{
+  font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;
+  padding:9px 14px;border:1px solid var(--ink);border-radius:999px;
+  transition:background .3s,color .3s;
+}
+.trait:hover{background:var(--ink);color:var(--paper)}
+
+/* ── Services ─────────────────────────── */
+.services__head{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  gap:30px;margin-bottom:60px;flex-wrap:wrap;
+}
+.services__title{
+  font:300 italic clamp(48px,7vw,96px)/.95 var(--display);
+  font-variation-settings:"opsz" 144,"SOFT" 60;
+  letter-spacing:-.04em;max-width:14ch;
+}
+.services__title em{color:var(--accent);font-weight:700;font-style:italic}
+.services__intro{max-width:42ch;color:var(--ink-soft);font-size:17px}
+.services__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--ink);border-left:1px solid var(--ink)}
+@media(max-width:720px){.services__grid{grid-template-columns:1fr}}
+.service{
+  padding:48px 36px;
+  border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);
+  background:var(--bg);
+  position:relative;overflow:hidden;
+  transition:background .4s;
+}
+.service::before{
+  content:'';position:absolute;inset:auto -10% -60% -10%;height:200%;
+  background:var(--ink);
+  transform:translateY(100%);transition:transform .55s cubic-bezier(.7,0,.2,1);
+  z-index:0;border-radius:50% 50% 0 0/8% 8% 0 0;
+}
+.service:hover::before{transform:translateY(0)}
+.service:hover .service__num,
+.service:hover .service__name,
+.service:hover .service__copy,
+.service:hover .service__tag{color:var(--paper)}
+.service:hover .service__name em{color:var(--accent)}
+.service:hover .service__num{border-color:var(--paper)}
+.service > *{position:relative;z-index:1;transition:color .3s}
+.service__num{
+  font:500 11px/1 var(--mono);letter-spacing:.14em;color:var(--muted);
+  border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:24px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.service__name{
+  font:300 italic clamp(34px,4vw,52px)/1 var(--display);
+  font-variation-settings:"opsz" 144,"SOFT" 60;
+  letter-spacing:-.025em;margin-bottom:18px;
+}
+.service__name em{color:var(--accent);font-weight:600}
+.service__copy{color:var(--ink-soft);max-width:38ch;margin-bottom:24px}
+.service__tags{display:flex;flex-wrap:wrap;gap:6px}
+.service__tag{font:500 10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;padding:6px 10px;border:1px solid currentColor;border-radius:999px;color:var(--muted)}
+
+/* ── Work ─────────────────────────── */
+.work__head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:60px;flex-wrap:wrap}
+.work__title{
+  font:300 italic clamp(48px,8vw,120px)/.9 var(--display);
+  font-variation-settings:"opsz" 144,"SOFT" 60;
+  letter-spacing:-.045em;
+}
+.work__title em{color:var(--accent);font-weight:700}
+.work__filters{display:flex;gap:8px;flex-wrap:wrap}
+.work__filter{
+  font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;
+  padding:10px 14px;border:1px solid var(--ink);border-radius:999px;
+  transition:background .25s,color .25s;
+}
+.work__filter:hover{background:var(--ink);color:var(--paper)}
+.work__filter.active{background:var(--ink);color:var(--paper)}
+
+.work__grid{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
+@media(max-width:880px){.work__grid{grid-template-columns:1fr;gap:32px}}
+
+.proj{
+  position:relative;background:var(--paper);border:1px solid var(--ink);
+  display:flex;flex-direction:column;justify-content:space-between;
+  padding:32px;aspect-ratio:1/1.1;overflow:hidden;
+  transition:transform .5s cubic-bezier(.7,0,.2,1),box-shadow .5s;
+}
+.proj:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.proj__svg{position:absolute;inset:0;z-index:0;opacity:.95}
+.proj > *{position:relative;z-index:1}
+.proj__top{display:flex;justify-content:space-between;font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.proj__cat{color:var(--accent)}
+.proj__year{color:var(--ink-soft)}
+.proj__name{
+  font:300 italic clamp(28px,2.6vw,40px)/.95 var(--display);
+  font-variation-settings:"opsz" 144,"SOFT" 60;
+  letter-spacing:-.03em;color:var(--ink);
+  max-width:14ch;
+}
+.proj__name em{color:var(--accent);font-weight:700;font-style:italic}
+.proj__bottom{display:flex;justify-content:space-between;align-items:flex-end;gap:14px}
+.proj__client{font:500 11px/1.4 var(--mono);color:var(--ink-soft);letter-spacing:.12em;text-transform:uppercase;max-width:60%}
+.proj__client b{color:var(--ink);display:block;margin-bottom:4px}
+.proj__arr{
+  width:42px;height:42px;border-radius:50%;
+  background:var(--ink);color:var(--paper);
+  display:grid;place-items:center;flex-shrink:0;
+  transition:background .3s,transform .3s;
+}
+.proj:hover .proj__arr{background:var(--accent);transform:rotate(-45deg)}
+
+/* span helpers */
+.proj.span-7{grid-column:span 7}
+.proj.span-5{grid-column:span 5}
+.proj.span-6{grid-column:span 6}
+.proj.span-4{grid-column:span 4}
+.proj.span-8{grid-column:span 8}
+@media(max-width:880px){.proj{grid-column:span 1!important;aspect-ratio:1/1}}
+
+/* ── Tools ─────────────────────────── */
+.tools{background:var(--ink);color:var(--paper);margin-top:0;padding-top:0;padding-bottom:0;max-width:none}
+.tools__inner{max-width:var(--max);margin:0 auto;padding:120px var(--pad)}
+.tools__head{
+  font:300 italic clamp(48px,7vw,96px)/.95 var(--display);
+  font-variation-settings:"opsz" 144,"SOFT" 80;
+  letter-spacing:-.04em;color:var(--paper);max-width:18ch;margin-bottom:40px;
+}
+.tools__head em{color:var(--accent);font-weight:700}
+.tools__sub{color:#C8BFA8;max-width:50ch;font-size:18px;margin-bottom:60px}
+.tools__list{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid #3a342b}
+@media(max-width:880px){.tools__list{grid-template-columns:repeat(2,1fr)}}
+.tool{
+  padding:28px 8px;border-bottom:1px solid #3a342b;border-right:1px solid #3a342b;
+  display:flex;flex-direction:column;align-items:center;gap:12px;
+  position:relative;overflow:hidden;
+  transition:background .35s;
+}
+.tool:hover{background:#1f1b16}
+.tool__icon{width:54px;height:54px;display:grid;place-items:center;border:1px solid #3a342b;border-radius:50%;color:var(--paper);transition:background .3s,border-color .3s,color .3s}
+.tool:hover .tool__icon{background:var(--accent);border-color:var(--accent);color:var(--ink)}
+.tool__name{font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase}
+
+/* ── Clients ─────────────────────────── */
+.clients{padding-top:60px}
+.clients__strip{
+  display:grid;grid-template-columns:repeat(6,1fr);gap:0;
+  border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+}
+@media(max-width:880px){.clients__strip{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:520px){.clients__strip{grid-template-columns:repeat(2,1fr)}}
+.client{
+  padding:36px 18px;
+  display:grid;place-items:center;
+  border-right:1px solid var(--line);
+  font:500 italic clamp(18px,1.6vw,24px)/1 var(--display);
+  font-variation-settings:"opsz" 60;
+  letter-spacing:-.02em;color:var(--ink-soft);
+  text-align:center;transition:color .3s,background .3s;
+}
+.client:last-child{border-right:none}
+.client:hover{background:var(--ink);color:var(--paper)}
+
+/* ── Testimonials ─────────────────────────── */
+.test__head{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  gap:30px;margin-bottom:50px;flex-wrap:wrap;
+}
+.test__title{
+  font:300 italic clamp(48px,7vw,96px)/.92 var(--display);
+  font-variation-settings:"opsz" 144,"SOFT" 60;
+  letter-spacing:-.04em;max-width:16ch;
+}
+.test__title em{color:var(--accent);font-weight:700}
+.test__nav{display:flex;gap:8px}
+.tnav{
+  width:48px;height:48px;border-radius:50%;border:1px solid var(--ink);
+  display:grid;place-items:center;transition:background .25s,color .25s;
+}
+.tnav:hover{background:var(--ink);color:var(--paper)}
+
+.test__rail{
+  display:flex;gap:28px;overflow-x:auto;scroll-snap-type:x mandatory;
+  padding:8px 0 36px;scrollbar-width:none;
+}
+.test__rail::-webkit-scrollbar{display:none}
+.test__card{
+  flex:0 0 min(440px,80vw);scroll-snap-align:start;
+  background:var(--paper);border:1px solid var(--ink);padding:36px;
+  display:flex;flex-direction:column;gap:24px;justify-content:space-between;
+  min-height:340px;position:relative;
+}
+.test__quote{font:300 italic 22px/1.35 var(--display);font-variation-settings:"opsz" 60;color:var(--ink)}
+.test__author{display:flex;align-items:center;gap:14px}
+.test__avatar{
+  width:44px;height:44px;border-radius:50%;
+  background:var(--accent);color:var(--paper);
+  display:grid;place-items:center;
+  font:700 14px/1 var(--mono);letter-spacing:.04em;
+  flex-shrink:0;
+}
+.test__name{font:600 14px/1.2 var(--sans);color:var(--ink)}
+.test__role{font:500 11px/1.2 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+.test__quote::before{
+  content:'';color:var(--accent);font:900 italic 80px/1 var(--display);
+  position:absolute;top:6px;right:30px;opacity:.18;
+}
+
+/* ── Process ─────────────────────────── */
+.process{background:var(--bg-tint);max-width:none;padding:0;margin:0}
+.process__inner{max-width:var(--max);margin:0 auto;padding:120px var(--pad)}
+.process__head{
+  font:300 italic clamp(48px,7vw,96px)/.95 var(--display);
+  font-variation-settings:"opsz" 144,"SOFT" 60;
+  letter-spacing:-.04em;max-width:14ch;margin-bottom:48px;
+}
+.process__head em{color:var(--accent);font-weight:700}
+.process__steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--ink)}
+@media(max-width:880px){.process__steps{grid-template-columns:1fr}}
+.step{padding:32px 24px 32px 0;border-bottom:1px solid var(--ink);position:relative}
+.step:not(:last-child){border-right:1px solid var(--ink);padding-right:24px;padding-left:24px}
+@media(max-width:880px){.step{padding:24px 0;border-right:none}.step:not(:last-child){padding:24px 0}}
+.step__num{
+  font:300 italic 56px/1 var(--display);
+  font-variation-settings:"opsz" 144,"SOFT" 80;
+  color:var(--accent);margin-bottom:16px;
+}
+.step__name{font:600 17px/1.2 var(--sans);margin-bottom:8px}
+.step__copy{color:var(--ink-soft);font-size:15px}
+
+/* ── Contact ─────────────────────────── */
+.contact{
+  background:var(--ink);color:var(--paper);max-width:none;padding:0;
+}
+.contact__inner{
+  max-width:var(--max);margin:0 auto;padding:140px var(--pad);
+  display:grid;grid-template-columns:1.05fr 1fr;gap:80px;align-items:start;
+}
+@media(max-width:1000px){.contact__inner{grid-template-columns:1fr;gap:48px}}
+.contact__left .eyebrow{color:var(--accent)}
+.contact__left .eyebrow::before{background:var(--accent)}
+.contact__title{
+  font:300 italic clamp(56px,9vw,140px)/.88 var(--display);
+  font-variation-settings:"opsz" 144,"SOFT" 80;
+  letter-spacing:-.045em;color:var(--paper);margin:24px 0 32px;
+}
+.contact__title em{color:var(--accent);font-weight:900;font-style:italic}
+.contact__desc{color:#C8BFA8;font-size:18px;max-width:42ch;margin-bottom:40px}
+
+.contact__channels{display:flex;flex-direction:column;gap:14px;margin-bottom:32px}
+.channel{
+  display:flex;justify-content:space-between;align-items:center;gap:18px;
+  padding:18px 0;border-top:1px solid #3a342b;
+  font:500 13px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;
+  color:var(--paper);transition:padding .3s;
+}
+.channel:last-child{border-bottom:1px solid #3a342b}
+.channel:hover{padding-left:8px}
+.channel__lbl{color:#8B7E68}
+.channel__val{display:flex;align-items:center;gap:10px;color:var(--paper)}
+.channel:hover .channel__val{color:var(--accent)}
+
+.form{display:flex;flex-direction:column;gap:20px;background:#1c1813;padding:36px;border:1px solid #3a342b}
+.form__row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:560px){.form__row{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column;gap:8px}
+.field label{font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#8B7E68}
+.field input,.field textarea,.field select{
+  background:transparent;border:none;border-bottom:1px solid #3a342b;
+  color:var(--paper);font:400 16px/1.4 var(--sans);
+  padding:10px 0;outline:none;transition:border-color .25s;font-family:var(--sans);
+}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--accent)}
+.field textarea{resize:vertical;min-height:80px}
+.field select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%23FBF7EE' stroke-width='1.5' fill='none' stroke-linecap='round'/></svg>");background-repeat:no-repeat;background-position:right 0 center;padding-right:24px}
+.field select option{background:#1c1813;color:var(--paper)}
+
+.form__submit{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:18px 24px;background:var(--accent);color:var(--paper);
+  font:500 12px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;
+  border-radius:999px;border:none;cursor:pointer;transition:background .25s,transform .25s;
+  margin-top:8px;
+}
+.form__submit:hover{background:var(--paper);color:var(--ink);transform:translateY(-2px)}
+.form__success{
+  display:none;background:#243B2A;color:var(--paper);
+  padding:18px 22px;border-radius:8px;
+  font:500 13px/1.5 var(--sans);
+}
+.form__success.show{display:block;animation:up .5s ease both}
+@keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── Footer ─────────────────────────── */
+.foot{background:var(--ink);color:var(--paper);max-width:none;padding:0;border-top:1px solid #3a342b}
+.foot__inner{max-width:var(--max);margin:0 auto;padding:64px var(--pad) 32px}
+.foot__top{
+  display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;
+  padding-bottom:40px;border-bottom:1px solid #3a342b;
+}
+@media(max-width:880px){.foot__top{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.foot__top{grid-template-columns:1fr}}
+.foot h5{font:500 11px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:#8B7E68;margin-bottom:18px}
+.foot ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:15px}
+.foot ul a{color:#D4CDB8;transition:color .25s}
+.foot ul a:hover{color:var(--accent)}
+.foot__brand{font:300 italic 40px/1 var(--display);font-variation-settings:"opsz" 144,"SOFT" 80;color:var(--paper);letter-spacing:-.03em;margin-bottom:14px}
+.foot__tag{color:#8B7E68;font-size:14px;max-width:30ch;margin-bottom:24px}
+.foot__socials{display:flex;gap:8px}
+.foot__social{
+  width:40px;height:40px;border-radius:50%;border:1px solid #3a342b;
+  display:grid;place-items:center;color:#D4CDB8;transition:background .25s,color .25s,border-color .25s,transform .25s;
+}
+.foot__social:hover{background:var(--accent);color:var(--paper);border-color:var(--accent);transform:translateY(-2px)}
+
+.foot__bottom{
+  display:flex;justify-content:space-between;align-items:center;gap:18px;
+  padding-top:24px;font:500 11px/1.6 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#8B7E68;flex-wrap:wrap;
+}
+.foot__bottom a{color:#D4CDB8;transition:color .25s}
+.foot__bottom a:hover{color:var(--accent)}
+
+/* ── Reveal ─────────────────────────── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:translateY(0)}
+.reveal.d2{transition-delay:.08s}
+.reveal.d3{transition-delay:.16s}
+.reveal.d4{transition-delay:.24s}
+
+/* Decorative ornaments */
+.orn{position:absolute;color:var(--accent);font-family:var(--display);pointer-events:none;user-select:none;animation:spin 30s linear infinite}
+.orn--big{font-size:160px;line-height:1;opacity:.18}
+.orn--med{font-size:80px;line-height:1;opacity:.5}
+
+</style>
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div class="cursor" id="cursor"></div>
+
+<!-- Top ticker -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__track">
+    <div class="ticker__item">
+      <span>Now booking · Q2 / Q3 2026</span>
+      <span>Based in the Philippines</span>
+      <span>Serving worldwide · US · UK · Canada · Taiwan · NZ</span>
+      <span>2–3 day template turnaround</span>
+      <span>Web · Graphic · E-commerce · Brand</span>
+    </div>
+    <div class="ticker__item" aria-hidden="true">
+      <span>Now booking · Q2 / Q3 2026</span>
+      <span>Based in the Philippines</span>
+      <span>Serving worldwide · US · UK · Canada · Taiwan · NZ</span>
+      <span>2–3 day template turnaround</span>
+      <span>Web · Graphic · E-commerce · Brand</span>
+    </div>
+  </div>
+</div>
+
+<!-- Nav -->
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="#top" class="logo" aria-label="Zag — Home">
+      <span class="logo__dot"></span>
+      Zag<span style="color:var(--accent)">.</span>
+    </a>
+    <div class="nav__links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="https://calendly.com/zaguetth-cabonce/book-a-call" target="_blank" rel="noopener" class="btn">
+      Book a call <span class="arr">→</span>
+    </a>
+  </div>
+</nav>
+
+<!-- ─────────── HERO ─────────── -->
+<header class="hero" id="top">
+  <div class="hero__top reveal">
+    <div class="hero__meta">
+      <span><b>Zaguetth Cabonce</b> · Web & Graphic Designer / Developer</span>
+      <span class="live"><span class="live__dot"></span><b id="liveTime">Live · Manila</b> &nbsp;·&nbsp; available worldwide</span>
+    </div>
+    <div class="hero__meta" style="text-align:right">
+      <span>Portfolio · 2026 Edition</span>
+      <span>EST. 2019 · 6+ years freelancing</span>
+    </div>
+  </div>
+
+  <h1 class="hero__title reveal d2" aria-label="A Rockstar Web Designer Developer">
+    Rockstar<br>
+    <span class="accent">Web&nbsp;Design</span><span class="star">✺</span><br>
+    <span class="stroke">&amp;&nbsp;Develop&shy;ment.</span>
+  </h1>
+
+  <div class="hero__row">
+    <p class="hero__lede reveal d3">
+      Hi, I'm <em>Zag</em> — a Philippines-based designer/developer helping businesses around the world turn ideas into websites that look amazing, load fast, and <em>actually bring in results</em>.
+    </p>
+    <div class="hero__sub reveal d4">
+      <span class="hero__caption">↓ Scroll to see the work · or jump straight to a call</span>
+      <div class="hero__cta">
+        <a href="https://calendly.com/zaguetth-cabonce/book-a-call" target="_blank" rel="noopener" class="btn">Start a project <span class="arr">→</span></a>
+        <a href="#work" class="btn btn--ghost">See selected work</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats reveal">
+    <div class="stat">
+      <div class="stat__num">6<sup>+</sup></div>
+      <div class="stat__lbl">Years designing &amp; shipping</div>
+    </div>
+    <div class="stat">
+      <div class="stat__num">5<sup>+</sup></div>
+      <div class="stat__lbl">Countries · 3 continents</div>
+    </div>
+    <div class="stat">
+      <div class="stat__num">2–3</div>
+      <div class="stat__lbl">Day template turnaround</div>
+    </div>
+    <div class="stat">
+      <div class="stat__num">100<sup>%</sup></div>
+      <div class="stat__lbl">Pixel-perfect &amp; SEO-friendly</div>
+    </div>
+  </div>
+</header>
+
+<!-- Marquee skill strip -->
+<section class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <div class="marquee__item">Web Design</div>
+    <div class="marquee__item">Web Development</div>
+    <div class="marquee__item">E-commerce</div>
+    <div class="marquee__item">Graphic Design</div>
+    <div class="marquee__item">Brand Identity</div>
+    <div class="marquee__item">Responsive UI</div>
+    <div class="marquee__item">Web Design</div>
+    <div class="marquee__item">Web Development</div>
+    <div class="marquee__item">E-commerce</div>
+    <div class="marquee__item">Graphic Design</div>
+    <div class="marquee__item">Brand Identity</div>
+    <div class="marquee__item">Responsive UI</div>
+  </div>
+</section>
+
+<!-- ─────────── ABOUT ─────────── -->
+<section class="section" id="about">
+  <div class="orn orn--big" style="top:60px;right:-30px">✺</div>
+  <div class="about">
+    <div class="about__monogram reveal">
+      <svg viewBox="0 0 400 440" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- Big editorial Z monogram -->
+        <defs>
+          <pattern id="dots" x="0" y="0" width="14" height="14" patternUnits="userSpaceOnUse">
+            <circle cx="2" cy="2" r="1.4" fill="#14110D" opacity=".18"/>
+          </pattern>
+        </defs>
+        <rect width="400" height="440" fill="#FBF7EE"/>
+        <rect width="400" height="440" fill="url(#dots)"/>
+        <!-- Decorative star -->
+        <g transform="translate(60 60)" fill="#D9472C">
+          <text x="0" y="20" font-family="Fraunces, serif" font-size="36" font-weight="900" font-style="italic">✺</text>
+        </g>
+        <!-- Big Z -->
+        <text x="200" y="280" text-anchor="middle"
+              font-family="Fraunces, serif" font-size="380" font-weight="300" font-style="italic"
+              fill="#14110D" letter-spacing="-12">Z</text>
+        <!-- subscript -->
+        <g transform="translate(60 380)">
+          <line x1="0" y1="0" x2="280" y2="0" stroke="#14110D" stroke-width="1"/>
+          <text x="0" y="22" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" fill="#14110D" letter-spacing="2">DESIGNER · DEVELOPER · 2019—∞</text>
+        </g>
+        <!-- corner mark -->
+        <g transform="translate(330 380)" fill="#D9472C">
+          <text x="0" y="0" font-family="Fraunces, serif" font-size="32" font-weight="900" font-style="italic">★</text>
+        </g>
+      </svg>
+      <div class="about__chips">
+        <span class="about__chip">DICT Trained</span>
+        <span class="about__chip">Remote · Worldwide</span>
+      </div>
+      <div class="about__cred">— Lovingly made by Zag ❤️</div>
+    </div>
+
+    <div>
+      <span class="eyebrow reveal">01 / About</span>
+      <h2 class="about__head reveal d2">Your <em>creative web partner</em> — turning imagination into pixels &amp; production code.</h2>
+      <div class="about__body">
+        <p class="reveal d3">
+          I've been creating <strong>beautiful, functional, and SEO-friendly websites</strong> for over 6 years, working with clients from the US, UK, Canada, Taiwan, New Zealand, and beyond. Whether it's a small business site, an e-commerce store, or a complete rebrand — I blend creativity with strategy to make sure your website isn't just pretty, it's <strong>powerful</strong>.
+        </p>
+        <p class="reveal d3">
+          I believe in clear communication, fast turnaround, and going the extra mile for every project. Many of my sites are designed, built, and launched in just a few days — without cutting corners.
+        </p>
+        <p class="reveal d4">
+          Trained through the Department of Information and Communications Technology (DICT) on branding, marketing, WordPress, and Elementor — and constantly leveling up. So far, so good. A unique experience with lots of virtual meetings, emails, and very nice clients.
+        </p>
+      </div>
+      <div class="about__traits reveal d4">
+        <span class="trait">Organized</span>
+        <span class="trait">Detailed</span>
+        <span class="trait">Efficient</span>
+        <span class="trait">Precise</span>
+        <span class="trait">Methodical</span>
+        <span class="trait">+ a problem-solver</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── SERVICES ─────────── -->
+<section class="section" id="services">
+  <span class="eyebrow reveal">02 / Services</span>
+  <div class="services__head" style="margin-top:18px">
+    <h2 class="services__title reveal d2">Ways I can <em>help you.</em></h2>
+    <p class="services__intro reveal d3">
+      I help businesses and individuals build standout digital experiences — from the design to the development. Whether you're launching a new brand or refreshing an existing one, I bring a strategic, hands-on approach to every project.
+    </p>
+  </div>
+
+  <div class="services__grid">
+    <article class="service reveal" data-cursor="explore →">
+      <div class="service__num"><span>S/01</span><span>↗</span></div>
+      <h3 class="service__name">Web <em>Design.</em></h3>
+      <p class="service__copy">Custom, responsive website designs that are intuitive, visually engaging, and purpose-driven. Clean layouts, user flows, aesthetic balance — connecting brands to their audience.</p>
+      <div class="service__tags">
+        <span class="service__tag">UI / UX</span>
+        <span class="service__tag">Wireframes</span>
+        <span class="service__tag">Prototyping</span>
+      </div>
+    </article>
+
+    <article class="service reveal d2" data-cursor="explore →">
+      <div class="service__num"><span>S/02</span><span>↗</span></div>
+      <h3 class="service__name">Web <em>Development.</em></h3>
+      <p class="service__copy">Pixel-perfect development using modern frameworks and best practices. From static sites to dynamic platforms — fast, scalable, SEO-optimized, and tailored to your goals.</p>
+      <div class="service__tags">
+        <span class="service__tag">WordPress</span>
+        <span class="service__tag">Elementor Pro</span>
+        <span class="service__tag">Shopify</span>
+        <span class="service__tag">WooCommerce</span>
+      </div>
+    </article>
+
+    <article class="service reveal" data-cursor="explore →">
+      <div class="service__num"><span>S/03</span><span>↗</span></div>
+      <h3 class="service__name">E-commerce <em>Stores.</em></h3>
+      <p class="service__copy">Selling online means broader reach, even when customers can't visit your store. I build &amp; optimize e-commerce stores so you can improve conversion and grow repeat purchases.</p>
+      <div class="service__tags">
+        <span class="service__tag">WooCommerce</span>
+        <span class="service__tag">Shopify</span>
+        <span class="service__tag">CRO</span>
+      </div>
+    </article>
+
+    <article class="service reveal d2" data-cursor="explore →">
+      <div class="service__num"><span>S/04</span><span>↗</span></div>
+      <h3 class="service__name">Graphic <em>Design.</em></h3>
+      <p class="service__copy">Versatile graphic solutions — brand collateral, social media content, marketing visuals. Every design is crafted to align with your brand's voice and drive visual consistency.</p>
+      <div class="service__tags">
+        <span class="service__tag">Photoshop</span>
+        <span class="service__tag">Illustrator</span>
+        <span class="service__tag">Canva</span>
+      </div>
+    </article>
+
+    <article class="service reveal" data-cursor="explore →">
+      <div class="service__num"><span>S/05</span><span>↗</span></div>
+      <h3 class="service__name">Brand <em>&amp; Logos.</em></h3>
+      <p class="service__copy">Logos, business cards, brochures, banner ads, and more — marketing materials that come in all shapes and sizes, each tailored to a specific purpose and the way your brand sounds.</p>
+      <div class="service__tags">
+        <span class="service__tag">Logo</span>
+        <span class="service__tag">Print</span>
+        <span class="service__tag">Banner Ads</span>
+      </div>
+    </article>
+
+    <article class="service reveal d2" data-cursor="explore →">
+      <div class="service__num"><span>S/06</span><span>↗</span></div>
+      <h3 class="service__name">Ready <em>Templates.</em></h3>
+      <p class="service__copy">Need an affordable site, fast? Pick a ready template tailored to your industry and have it published in just 2–3 days after you submit your details. No corners cut.</p>
+      <div class="service__tags">
+        <span class="service__tag">2–3 day launch</span>
+        <span class="service__tag">Industry-ready</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ─────────── WORK ─────────── -->
+<section class="section" id="work">
+  <span class="eyebrow reveal">03 / Selected work</span>
+
+  <div class="work__head" style="margin-top:18px">
+    <h2 class="work__title reveal d2">Less talk.<br><em>More designs.</em></h2>
+    <div class="work__filters reveal d3">
+      <button class="work__filter active" data-filter="all">All</button>
+      <button class="work__filter" data-filter="logo">Logo</button>
+      <button class="work__filter" data-filter="ads">Banner Ads</button>
+      <button class="work__filter" data-filter="product">Product</button>
+      <button class="work__filter" data-filter="web">Web</button>
+    </div>
+  </div>
+
+  <div class="work__grid" id="workGrid">
+
+    <!-- Project 1 — wide -->
+    <article class="proj span-7 reveal" data-cat="logo" data-cursor="view →">
+      <svg class="proj__svg" viewBox="0 0 700 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#FBF7EE"/>
+            <stop offset="100%" stop-color="#E8DFCC"/>
+          </linearGradient>
+        </defs>
+        <rect width="700" height="600" fill="url(#g1)"/>
+        <!-- Cacao bean shapes -->
+        <g transform="translate(350 320)">
+          <ellipse cx="0" cy="0" rx="180" ry="120" fill="#5C3A1E" opacity=".95"/>
+          <path d="M-180 0 Q 0 -50 180 0" stroke="#FBF7EE" stroke-width="3" fill="none"/>
+          <ellipse cx="-90" cy="-20" rx="14" ry="8" fill="#FBF7EE"/>
+        </g>
+        <text x="350" y="120" text-anchor="middle" font-family="Fraunces, serif" font-size="36" font-weight="900" font-style="italic" fill="#5C3A1E">Cacao</text>
+        <text x="350" y="500" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="14" font-weight="500" fill="#5C3A1E" letter-spacing="6">DE SIARGAO</text>
+      </svg>
+      <div class="proj__top"><span class="proj__cat">Logo / Branding</span><span class="proj__year">2024</span></div>
+      <div>
+        <h3 class="proj__name">Cacao de <em>Siargao</em></h3>
+      </div>
+      <div class="proj__bottom">
+        <div class="proj__client"><b>Cacao de Siargao</b>Logo &amp; Brand Identity</div>
+        <span class="proj__arr">↗</span>
+      </div>
+    </article>
+
+    <!-- Project 2 -->
+    <article class="proj span-5 reveal d2" data-cat="logo" data-cursor="view →">
+      <svg class="proj__svg" viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <rect width="500" height="600" fill="#243B2A"/>
+        <g transform="translate(250 280)" fill="#D9472C">
+          <!-- Eagle silhouette abstraction -->
+          <path d="M0 -90 L45 -50 L80 -90 L100 -40 L70 0 L100 40 L80 90 L45 50 L0 90 L-45 50 L-80 90 L-100 40 L-70 0 L-100 -40 L-80 -90 L-45 -50 Z" stroke="#FBF7EE" stroke-width="2" fill="#D9472C"/>
+          <circle cx="0" cy="0" r="22" fill="#FBF7EE"/>
+        </g>
+        <text x="250" y="490" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" fill="#FBF7EE" letter-spacing="3">UEGII · INTERNATIONAL</text>
+      </svg>
+      <div class="proj__top"><span class="proj__cat">Logo / Org</span><span class="proj__year">2023</span></div>
+      <div><h3 class="proj__name">Eagle <em>Guardians</em></h3></div>
+      <div class="proj__bottom">
+        <div class="proj__client"><b>UEGII Inc.</b>Identity Mark</div>
+        <span class="proj__arr">↗</span>
+      </div>
+    </article>
+
+    <!-- Project 3 -->
+    <article class="proj span-5 reveal" data-cat="logo" data-cursor="view →">
+      <svg class="proj__svg" viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <rect width="500" height="600" fill="#FBF7EE"/>
+        <g transform="translate(250 280)">
+          <!-- Falcon head abstraction -->
+          <polygon points="0,-110 30,-40 110,-30 50,30 70,110 0,70 -70,110 -50,30 -110,-30 -30,-40" fill="#14110D"/>
+          <circle cx="-15" cy="-10" r="6" fill="#D9472C"/>
+        </g>
+        <text x="250" y="490" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="22" font-weight="600" fill="#14110D">Falcon Guardians</text>
+      </svg>
+      <div class="proj__top"><span class="proj__cat">Logo / Org</span><span class="proj__year">2023</span></div>
+      <div><h3 class="proj__name">Falcon <em>Guardians</em></h3></div>
+      <div class="proj__bottom">
+        <div class="proj__client"><b>FGII Inc.</b>Mark Design</div>
+        <span class="proj__arr">↗</span>
+      </div>
+    </article>
+
+    <!-- Project 4 -->
+    <article class="proj span-7 reveal d2" data-cat="ads" data-cursor="view →">
+      <svg class="proj__svg" viewBox="0 0 700 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <rect width="700" height="600" fill="#1A0A2E"/>
+        <!-- Slot reels -->
+        <g transform="translate(350 280)">
+          <rect x="-150" y="-90" width="300" height="180" rx="12" fill="#FBC02D" stroke="#FBF7EE" stroke-width="3"/>
+          <rect x="-130" y="-70" width="80" height="140" fill="#1A0A2E"/>
+          <rect x="-40" y="-70" width="80" height="140" fill="#1A0A2E"/>
+          <rect x="50" y="-70" width="80" height="140" fill="#1A0A2E"/>
+          <text x="-90" y="20" text-anchor="middle" font-family="Fraunces, serif" font-size="60" font-weight="900" fill="#FBC02D">7</text>
+          <text x="0" y="20" text-anchor="middle" font-family="Fraunces, serif" font-size="60" font-weight="900" fill="#FBC02D">7</text>
+          <text x="90" y="20" text-anchor="middle" font-family="Fraunces, serif" font-size="60" font-weight="900" fill="#FBC02D">7</text>
+        </g>
+        <text x="350" y="120" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="40" font-weight="900" fill="#D9472C">DREAM JACKPOT</text>
+        <text x="350" y="490" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" fill="#FBF7EE" letter-spacing="3">300 × 250 · BANNER AD</text>
+      </svg>
+      <div class="proj__top"><span class="proj__cat">Banner Ads</span><span class="proj__year">2022</span></div>
+      <div><h3 class="proj__name">Dream <em>Jackpot</em></h3></div>
+      <div class="proj__bottom">
+        <div class="proj__client"><b>Dream Jackpot</b>Animated Banner Set</div>
+        <span class="proj__arr">↗</span>
+      </div>
+    </article>
+
+    <!-- Project 5 -->
+    <article class="proj span-4 reveal" data-cat="ads" data-cursor="view →">
+      <svg class="proj__svg" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <rect width="400" height="500" fill="#D9472C"/>
+        <g transform="translate(200 240)">
+          <!-- Sneaker abstract -->
+          <ellipse cx="0" cy="40" rx="130" ry="22" fill="#14110D" opacity=".4"/>
+          <path d="M-110 0 L-90 -50 L-20 -60 L40 -40 L100 -10 L120 20 L-120 30 Z" fill="#FBF7EE"/>
+          <circle cx="-50" cy="-30" r="10" fill="#14110D"/>
+          <line x1="-110" y1="0" x2="120" y2="0" stroke="#14110D" stroke-width="2"/>
+        </g>
+        <text x="200" y="120" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="28" font-weight="900" fill="#FBF7EE">Sole Heaven</text>
+        <text x="200" y="430" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" font-weight="500" fill="#FBF7EE" letter-spacing="3">300 × 250</text>
+      </svg>
+      <div class="proj__top"><span class="proj__cat">Banner Ads</span><span class="proj__year">2022</span></div>
+      <div><h3 class="proj__name">Sole <em>Heaven</em></h3></div>
+      <div class="proj__bottom">
+        <div class="proj__client"><b>Sole Heaven</b>Display Ads</div>
+        <span class="proj__arr">↗</span>
+      </div>
+    </article>
+
+    <!-- Project 6 -->
+    <article class="proj span-4 reveal d2" data-cat="ads" data-cursor="view →">
+      <svg class="proj__svg" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <rect width="400" height="500" fill="#FBF7EE"/>
+        <!-- baby blocks -->
+        <g transform="translate(200 250)">
+          <rect x="-90" y="-60" width="60" height="60" fill="#F5C2C7" stroke="#14110D" stroke-width="2"/>
+          <rect x="-20" y="-60" width="60" height="60" fill="#A2D2FF" stroke="#14110D" stroke-width="2"/>
+          <rect x="50" y="-60" width="60" height="60" fill="#FBC02D" stroke="#14110D" stroke-width="2"/>
+          <text x="-60" y="-15" text-anchor="middle" font-family="Fraunces, serif" font-size="38" font-weight="900" fill="#14110D">S</text>
+          <text x="10" y="-15" text-anchor="middle" font-family="Fraunces, serif" font-size="38" font-weight="900" fill="#14110D">B</text>
+          <text x="80" y="-15" text-anchor="middle" font-family="Fraunces, serif" font-size="38" font-weight="900" fill="#14110D">!</text>
+          <circle cx="0" cy="50" r="40" fill="#D9472C"/>
+          <text x="0" y="62" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="14" font-weight="700" fill="#FBF7EE">SPIN</text>
+        </g>
+        <text x="200" y="120" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="28" font-weight="900" fill="#14110D">Slots Baby</text>
+      </svg>
+      <div class="proj__top"><span class="proj__cat">Banner Ads</span><span class="proj__year">2022</span></div>
+      <div><h3 class="proj__name">Slots <em>Baby</em></h3></div>
+      <div class="proj__bottom">
+        <div class="proj__client"><b>Slots Baby</b>Animated Banners</div>
+        <span class="proj__arr">↗</span>
+      </div>
+    </article>
+
+    <!-- Project 7 -->
+    <article class="proj span-4 reveal" data-cat="product" data-cursor="view →">
+      <svg class="proj__svg" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <rect width="400" height="500" fill="#F5DCC0"/>
+        <!-- bottle -->
+        <g transform="translate(200 250)">
+          <rect x="-50" y="-100" width="100" height="200" rx="14" fill="#E89B47" stroke="#14110D" stroke-width="2.5"/>
+          <rect x="-40" y="-110" width="80" height="20" fill="#14110D"/>
+          <text x="0" y="0" text-anchor="middle" font-family="Fraunces, serif" font-size="14" font-weight="900" font-style="italic" fill="#FBF7EE">TREE</text>
+          <text x="0" y="18" text-anchor="middle" font-family="Fraunces, serif" font-size="14" font-weight="900" font-style="italic" fill="#FBF7EE">TO TUB</text>
+          <line x1="-30" y1="40" x2="30" y2="40" stroke="#FBF7EE" stroke-width="1"/>
+          <text x="0" y="58" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#FBF7EE" letter-spacing="2">BODY WASH</text>
+        </g>
+        <!-- leaves -->
+        <g transform="translate(80 380)" fill="#243B2A">
+          <ellipse cx="0" cy="0" rx="40" ry="14" transform="rotate(-30)"/>
+          <ellipse cx="20" cy="-10" rx="34" ry="12" transform="rotate(15)"/>
+        </g>
+        <g transform="translate(330 360)" fill="#243B2A">
+          <ellipse cx="0" cy="0" rx="36" ry="13" transform="rotate(45)"/>
+        </g>
+      </svg>
+      <div class="proj__top"><span class="proj__cat">Product Imagery</span><span class="proj__year">2021</span></div>
+      <div><h3 class="proj__name">Body <em>Wash</em></h3></div>
+      <div class="proj__bottom">
+        <div class="proj__client"><b>Tree to Tub</b>Product Photography Edit</div>
+        <span class="proj__arr">↗</span>
+      </div>
+    </article>
+
+    <!-- Project 8 -->
+    <article class="proj span-4 reveal d2" data-cat="product" data-cursor="view →">
+      <svg class="proj__svg" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <rect width="400" height="500" fill="#E8E2C5"/>
+        <g transform="translate(200 260)">
+          <circle cx="0" cy="0" r="80" fill="#A8B57A" stroke="#14110D" stroke-width="2.5"/>
+          <rect x="-50" y="-90" width="100" height="20" fill="#14110D"/>
+          <text x="0" y="-10" text-anchor="middle" font-family="Fraunces, serif" font-size="14" font-weight="900" font-style="italic" fill="#FBF7EE">TREE</text>
+          <text x="0" y="8" text-anchor="middle" font-family="Fraunces, serif" font-size="14" font-weight="900" font-style="italic" fill="#FBF7EE">TO TUB</text>
+          <text x="0" y="28" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#FBF7EE" letter-spacing="2">BODY BUTTER</text>
+        </g>
+        <g transform="translate(70 100)" fill="#243B2A" opacity=".7">
+          <path d="M0 0 Q 20 -30 40 0 Q 20 30 0 0Z"/>
+        </g>
+        <g transform="translate(330 130)" fill="#243B2A" opacity=".7">
+          <path d="M0 0 Q 20 -30 40 0 Q 20 30 0 0Z"/>
+        </g>
+      </svg>
+      <div class="proj__top"><span class="proj__cat">Product Imagery</span><span class="proj__year">2021</span></div>
+      <div><h3 class="proj__name">Body <em>Butter</em></h3></div>
+      <div class="proj__bottom">
+        <div class="proj__client"><b>Tree to Tub</b>Editorial Product Set</div>
+        <span class="proj__arr">↗</span>
+      </div>
+    </article>
+
+    <!-- Project 9 -->
+    <article class="proj span-4 reveal" data-cat="product" data-cursor="view →">
+      <svg class="proj__svg" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <rect width="400" height="500" fill="#F5E6D3"/>
+        <g transform="translate(200 260)">
+          <rect x="-40" y="-80" width="80" height="160" rx="10" fill="#FBF7EE" stroke="#14110D" stroke-width="2.5"/>
+          <rect x="-32" y="-90" width="64" height="14" fill="#243B2A"/>
+          <text x="0" y="-30" text-anchor="middle" font-family="Fraunces, serif" font-size="11" font-weight="900" font-style="italic" fill="#243B2A">TREE</text>
+          <text x="0" y="-15" text-anchor="middle" font-family="Fraunces, serif" font-size="11" font-weight="900" font-style="italic" fill="#243B2A">TO TUB</text>
+          <line x1="-25" y1="0" x2="25" y2="0" stroke="#243B2A" stroke-width=".8"/>
+          <text x="0" y="20" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="6" fill="#243B2A" letter-spacing="1">HAND CREAM</text>
+        </g>
+        <g transform="translate(310 380)" fill="#243B2A">
+          <ellipse cx="0" cy="0" rx="30" ry="10" transform="rotate(-30)"/>
+        </g>
+      </svg>
+      <div class="proj__top"><span class="proj__cat">Product Imagery</span><span class="proj__year">2021</span></div>
+      <div><h3 class="proj__name">Hand <em>Cream</em></h3></div>
+      <div class="proj__bottom">
+        <div class="proj__client"><b>Tree to Tub</b>Lifestyle Product Edit</div>
+        <span class="proj__arr">↗</span>
+      </div>
+    </article>
+
+    <!-- Project 10 -->
+    <article class="proj span-12 reveal" data-cat="web" data-cursor="view →" style="aspect-ratio:1/.5">
+      <svg class="proj__svg" viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <rect width="1200" height="600" fill="#FBF7EE"/>
+        <!-- mock browser -->
+        <g transform="translate(100 80)">
+          <rect x="0" y="0" width="1000" height="440" fill="#14110D"/>
+          <circle cx="20" cy="20" r="6" fill="#D9472C"/>
+          <circle cx="42" cy="20" r="6" fill="#FBC02D"/>
+          <circle cx="64" cy="20" r="6" fill="#3aaa6a"/>
+          <rect x="20" y="60" width="960" height="360" fill="#F1EBDF"/>
+          <text x="60" y="160" font-family="Fraunces, serif" font-size="78" font-weight="300" font-style="italic" fill="#14110D">Web Templates</text>
+          <text x="60" y="200" font-family="JetBrains Mono, monospace" font-size="14" fill="#8B7E68" letter-spacing="2">06 INDUSTRIES · LAUNCHED IN 2–3 DAYS</text>
+          <rect x="60" y="240" width="220" height="140" fill="#D9472C"/>
+          <rect x="300" y="240" width="220" height="140" fill="#243B2A"/>
+          <rect x="540" y="240" width="220" height="140" fill="#FBC02D"/>
+          <rect x="780" y="240" width="180" height="140" fill="#14110D"/>
+        </g>
+      </svg>
+      <div class="proj__top"><span class="proj__cat">Web · Templates</span><span class="proj__year">2024 · ongoing</span></div>
+      <div><h3 class="proj__name">Industry <em>Templates</em> — ready in 2–3 days</h3></div>
+      <div class="proj__bottom">
+        <div class="proj__client"><b>Zag Designs · Templates</b>Industry-ready websites · WordPress + Elementor Pro</div>
+        <span class="proj__arr">↗</span>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ─────────── TOOLS ─────────── -->
+<section class="tools" id="tools">
+  <div class="tools__inner">
+    <span class="eyebrow reveal" style="color:var(--accent)">04 / Stack</span>
+    <h2 class="tools__head reveal d2" style="margin-top:18px">The <em>tools</em> I usually use.</h2>
+    <p class="tools__sub reveal d3">Six years of leveling up — from a six-week DICT intensive on branding, marketing, WordPress &amp; Elementor, to building dynamic e-commerce sites and full brand systems for global clients.</p>
+
+    <div class="tools__list">
+      <div class="tool reveal"><div class="tool__icon">⌘</div><div class="tool__name">Elementor Pro</div></div>
+      <div class="tool reveal d2"><div class="tool__icon">W</div><div class="tool__name">WordPress</div></div>
+      <div class="tool reveal d3"><div class="tool__icon">S</div><div class="tool__name">Shopify</div></div>
+      <div class="tool reveal d4"><div class="tool__icon">▦</div><div class="tool__name">WooCommerce</div></div>
+      <div class="tool reveal"><div class="tool__icon">Ps</div><div class="tool__name">Photoshop</div></div>
+      <div class="tool reveal d2"><div class="tool__icon">Ai</div><div class="tool__name">Illustrator</div></div>
+      <div class="tool reveal d3"><div class="tool__icon">▷</div><div class="tool__name">Filmora</div></div>
+      <div class="tool reveal d4"><div class="tool__icon">◆</div><div class="tool__name">Canva</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── CLIENTS ─────────── -->
+<section class="section clients">
+  <span class="eyebrow reveal">05 / Clients &amp; employers</span>
+  <h2 class="services__title reveal d2" style="margin-top:18px;margin-bottom:48px;max-width:18ch">Trusted by <em>brands</em> across 5+ countries.</h2>
+
+  <div class="clients__strip">
+    <div class="client">ActiveSystems</div>
+    <div class="client">AristoSourcing</div>
+    <div class="client">Fortuna&nbsp;Gaming</div>
+    <div class="client">Ixomsoft</div>
+    <div class="client">1768&nbsp;Degrees</div>
+    <div class="client">Tree&nbsp;to&nbsp;Tub</div>
+  </div>
+</section>
+
+<!-- ─────────── TESTIMONIALS ─────────── -->
+<section class="section" id="testimonials">
+  <span class="eyebrow reveal">06 / Words from clients</span>
+  <div class="test__head" style="margin-top:18px">
+    <h2 class="test__title reveal d2">Kind words from <em>kind humans.</em></h2>
+    <div class="test__nav reveal d3">
+      <button class="tnav" id="tprev" aria-label="Previous">←</button>
+      <button class="tnav" id="tnext" aria-label="Next">→</button>
+    </div>
+  </div>
+
+  <div class="test__rail" id="testRail">
+    <article class="test__card">
+      <p class="test__quote">"Fantastic job in doing design professionally. I would recommend this to all small businesses that need great design at a very affordable contract price."</p>
+      <div class="test__author"><div class="test__avatar">FS</div><div><div class="test__name">Fernando Sustaita</div><div class="test__role">Client</div></div></div>
+    </article>
+    <article class="test__card">
+      <p class="test__quote">"Awesome work! Very professional and able to complete the task on time."</p>
+      <div class="test__author"><div class="test__avatar">GD</div><div><div class="test__name">Greg Don</div><div class="test__role">Client</div></div></div>
+    </article>
+    <article class="test__card">
+      <p class="test__quote">"Great design. Very professional and I love how he works his project."</p>
+      <div class="test__author"><div class="test__avatar">JP</div><div><div class="test__name">Jerome Photography</div><div class="test__role">Client</div></div></div>
+    </article>
+    <article class="test__card">
+      <p class="test__quote">"Zag is amazing. He did a great job and fits exactly what we need. I recommend this to all businesses that need professional designs."</p>
+      <div class="test__author"><div class="test__avatar">PE</div><div><div class="test__name">PhilExport Caraga</div><div class="test__role">Org · Philippines</div></div></div>
+    </article>
+    <article class="test__card">
+      <p class="test__quote">"Zag brought our brand vision to life with a website that's both beautiful and functional. The process was smooth, and the result exceeded expectations."</p>
+      <div class="test__author"><div class="test__avatar">AR</div><div><div class="test__name">Anna Rodriguez</div><div class="test__role">Client</div></div></div>
+    </article>
+    <article class="test__card">
+      <p class="test__quote">"From design to development, every detail was handled with care. Zaguetth is not just a designer but a problem-solver and a great collaborator."</p>
+      <div class="test__author"><div class="test__avatar">JM</div><div><div class="test__name">James Mitchell</div><div class="test__role">Client</div></div></div>
+    </article>
+    <article class="test__card">
+      <p class="test__quote">"Highly recommend! They listened to our needs and transformed them into a stunning and easy-to-navigate site. On time and on point."</p>
+      <div class="test__author"><div class="test__avatar">LK</div><div><div class="test__name">Linda Kim</div><div class="test__role">Client</div></div></div>
+    </article>
+    <article class="test__card">
+      <p class="test__quote">"The design work was sharp, original, and totally aligned with our brand. Great communication throughout the project."</p>
+      <div class="test__author"><div class="test__avatar">TB</div><div><div class="test__name">Tom Baxter</div><div class="test__role">Client</div></div></div>
+    </article>
+    <article class="test__card">
+      <p class="test__quote">"We needed a fast turnaround and Zaguetth delivered — responsive design, clean code, and thoughtful UX. Couldn't be happier."</p>
+      <div class="test__author"><div class="test__avatar">RP</div><div><div class="test__name">Rachel Patel</div><div class="test__role">Client</div></div></div>
+    </article>
+    <article class="test__card">
+      <p class="test__quote">"This is the third project we've done together, and I keep coming back for a reason. Reliable, creative, and always professional."</p>
+      <div class="test__author"><div class="test__avatar">DF</div><div><div class="test__name">Derek Franco</div><div class="test__role">Returning client</div></div></div>
+    </article>
+    <article class="test__card">
+      <p class="test__quote">"Zag turned vague ideas into a fully realized visual identity. The attention to detail in every asset was impressive."</p>
+      <div class="test__author"><div class="test__avatar">SG</div><div><div class="test__name">Simone Greaves</div><div class="test__role">Client</div></div></div>
+    </article>
+    <article class="test__card">
+      <p class="test__quote">"The new website has already improved our bounce rate and lead conversion. Zaguetth understood both our business and user needs."</p>
+      <div class="test__author"><div class="test__avatar">VS</div><div><div class="test__name">Victor Silva</div><div class="test__role">Client</div></div></div>
+    </article>
+  </div>
+</section>
+
+<!-- ─────────── PROCESS ─────────── -->
+<section class="process" id="process">
+  <div class="process__inner">
+    <span class="eyebrow reveal">07 / Process</span>
+    <h2 class="process__head reveal d2" style="margin-top:18px">From idea to <em>launch.</em></h2>
+
+    <div class="process__steps">
+      <div class="step reveal">
+        <div class="step__num">01</div>
+        <div class="step__name">Discovery call</div>
+        <div class="step__copy">A 15–30 minute chat to understand your brand, audience, goals, and what makes you different. Free. No pressure.</div>
+      </div>
+      <div class="step reveal d2">
+        <div class="step__num">02</div>
+        <div class="step__name">Design &amp; direction</div>
+        <div class="step__copy">Wireframes, moodboard, and a polished UI direction tailored to your brand. Quick rounds, clear feedback loops.</div>
+      </div>
+      <div class="step reveal d3">
+        <div class="step__num">03</div>
+        <div class="step__name">Build &amp; optimize</div>
+        <div class="step__copy">Pixel-perfect development on WordPress, Elementor Pro, Shopify, or WooCommerce. Fast, responsive, SEO-friendly.</div>
+      </div>
+      <div class="step reveal d4">
+        <div class="step__num">04</div>
+        <div class="step__name">Launch &amp; support</div>
+        <div class="step__copy">QA across devices, training handoff, and post-launch tweaks. Many projects ship in just a few days — without cutting corners.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── CONTACT ─────────── -->
+<section class="contact" id="contact">
+  <div class="contact__inner">
+    <div class="contact__left">
+      <span class="eyebrow reveal">08 / Get in touch</span>
+      <h2 class="contact__title reveal d2">Now it's <em>your turn</em> to say hi.</h2>
+      <p class="contact__desc reveal d3">I love to hear from you. Drop a message and I'll get back shortly — or skip the queue and book a call directly. Many sites are designed, built, and launched in just a few days.</p>
+
+      <div class="contact__channels reveal d4">
+        <a class="channel" href="mailto:hi@zaguetth.com">
+          <span class="channel__lbl">Email</span>
+          <span class="channel__val">hi@zaguetth.com →</span>
+        </a>
+        <a class="channel" href="tel:+639270496382">
+          <span class="channel__lbl">Phone</span>
+          <span class="channel__val">+63 92704 96382 →</span>
+        </a>
+        <a class="channel" href="https://calendly.com/zaguetth-cabonce/book-a-call" target="_blank" rel="noopener">
+          <span class="channel__lbl">Book a call</span>
+          <span class="channel__val">Calendly · 15 / 30 min →</span>
+        </a>
+        <div class="channel">
+          <span class="channel__lbl">Location</span>
+          <span class="channel__val">Philippines · UTC+8</span>
+        </div>
+      </div>
+    </div>
+
+    <form class="form reveal d2" id="contactForm" novalidate>
+      <div class="form__row">
+        <div class="field">
+          <label for="fn">First name</label>
+          <input type="text" id="fn" name="fn" required placeholder="Jane">
+        </div>
+        <div class="field">
+          <label for="ln">Last name</label>
+          <input type="text" id="ln" name="ln" required placeholder="Doe">
+        </div>
+      </div>
+      <div class="form__row">
+        <div class="field">
+          <label for="em">Email</label>
+          <input type="email" id="em" name="em" required placeholder="jane@brand.com">
+        </div>
+        <div class="field">
+          <label for="ph">Contact</label>
+          <input type="tel" id="ph" name="ph" placeholder="+1 555 0100">
+        </div>
+      </div>
+      <div class="field">
+        <label for="bg">What do you need?</label>
+        <select id="bg" name="bg" required>
+          <option value="" disabled selected>Pick a service…</option>
+          <option>Web Design</option>
+          <option>Web Development</option>
+          <option>E-commerce Store</option>
+          <option>Graphic Design</option>
+          <option>Logo &amp; Branding</option>
+          <option>Ready Template (2–3 day launch)</option>
+          <option>Just chatting</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="ms">Message</label>
+        <textarea id="ms" name="ms" rows="3" placeholder="A few words about your project, timeline, and budget."></textarea>
+      </div>
+      <button type="submit" class="form__submit">Send Message →</button>
+      <div class="form__success" id="success">
+        ✦ Thank you! Your message is on its way. I'll reply within 24 hours from Manila.
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ─────────── FOOTER ─────────── -->
+<footer class="foot">
+  <div class="foot__inner">
+    <div class="foot__top">
+      <div>
+        <div class="foot__brand">Zag<span style="color:var(--accent)">.</span></div>
+        <p class="foot__tag">A Philippines-based Web &amp; Graphic Designer/Developer helping businesses worldwide turn ideas into websites that look amazing &amp; bring in results.</p>
+        <div class="foot__socials">
+          <a class="foot__social" href="https://www.facebook.com/zaguetth" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3a4 4 0 0 0-4 4v2H7v3h3v8h3v-8h2.5l.5-3H13v-2.5c0-.3.2-.5.5-.5z"/></svg>
+          </a>
+          <a class="foot__social" href="https://www.linkedin.com/in/zaguetth/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM8.3 18H5.7v-8.5h2.6V18zM7 8.4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zM18.3 18h-2.6v-4.6c0-1.1 0-2.5-1.5-2.5s-1.8 1.2-1.8 2.4V18H9.8V9.5h2.5v1.2c.4-.7 1.3-1.4 2.7-1.4 2.9 0 3.4 1.9 3.4 4.4V18z"/></svg>
+          </a>
+          <a class="foot__social" href="https://www.instagram.com/zaguetth/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+          </a>
+          <a class="foot__social" href="https://x.com/ZagCabonce" target="_blank" rel="noopener" aria-label="X / Twitter">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.4 3H22l-7.4 8.5L23 21h-7l-5.5-7-6.3 7H1l8-9.1L1 3h7.1l5 6.6L18.4 3zm-2.5 16h2L7.2 5H5.1l10.8 14z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h5>Sitemap</h5>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#work">Portfolio</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Services</h5>
+        <ul>
+          <li><a href="#services">Web Design</a></li>
+          <li><a href="#services">Web Development</a></li>
+          <li><a href="#services">E-commerce</a></li>
+          <li><a href="#services">Graphic Design</a></li>
+          <li><a href="#services">Templates</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="mailto:hi@zaguetth.com">hi@zaguetth.com</a></li>
+          <li><a href="tel:+639270496382">+63 92704 96382</a></li>
+          <li><a href="https://calendly.com/zaguetth-cabonce/book-a-call" target="_blank" rel="noopener">Book a call</a></li>
+          <li>Philippines · UTC+8</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot__bottom">
+      <span>© <span id="yr">2026</span> Zaguetth Cabonce · All rights reserved</span>
+      <span>Lovingly made by <a href="https://www.facebook.com/zaguetth/" target="_blank" rel="noopener">ZAG</a> ❤️</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ───────────────────────────────────────────
+   Interactions
+─────────────────────────────────────────── */
+
+// Year
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+// Live Manila time
+function tick(){
+  const now = new Date();
+  const t = new Intl.DateTimeFormat('en-US',{
+    hour:'2-digit',minute:'2-digit',timeZone:'Asia/Manila',hour12:false
+  }).format(now);
+  const el = document.getElementById('liveTime');
+  if (el) el.textContent = `Live · Manila ${t}`;
+}
+tick(); setInterval(tick, 30000);
+
+// Nav scroll state
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 30);
+}, {passive:true});
+
+// Reveal on scroll
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting){
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+}, {threshold:0.12, rootMargin:'0px 0px -10% 0px'});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// Custom cursor (desktop / fine pointer only)
+const fine = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+if (fine){
+  document.body.classList.add('has-cursor');
+  const c = document.getElementById('cursor');
+  document.addEventListener('pointermove', e => {
+    c.classList.add('show');
+    c.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%,-50%)`;
+  });
+  document.addEventListener('pointerleave', () => c.classList.remove('show'));
+  document.querySelectorAll('[data-cursor]').forEach(el => {
+    el.addEventListener('pointerenter', () => {
+      c.classList.add('is-hover');
+      c.setAttribute('data-label', el.getAttribute('data-cursor'));
+    });
+    el.addEventListener('pointerleave', () => c.classList.remove('is-hover'));
+  });
+}
+
+// Work filters
+const grid = document.getElementById('workGrid');
+const projs = grid.querySelectorAll('.proj');
+document.querySelectorAll('.work__filter').forEach(b => {
+  b.addEventListener('click', () => {
+    document.querySelectorAll('.work__filter').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    const f = b.dataset.filter;
+    projs.forEach(p => {
+      const show = (f === 'all') || p.dataset.cat === f;
+      p.style.display = show ? '' : 'none';
+    });
+  });
+});
+
+// Testimonials nav
+const rail = document.getElementById('testRail');
+const card = rail.querySelector('.test__card');
+document.getElementById('tprev').addEventListener('click', () => rail.scrollBy({left:-(card.offsetWidth+28), behavior:'smooth'}));
+document.getElementById('tnext').addEventListener('click', () => rail.scrollBy({left: card.offsetWidth+28, behavior:'smooth'}));
+
+// Contact form
+const form = document.getElementById('contactForm');
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  if (!form.checkValidity()){
+    form.reportValidity();
+    return;
+  }
+  const ok = document.getElementById('success');
+  ok.classList.add('show');
+  form.reset();
+  setTimeout(() => ok.classList.remove('show'), 6000);
+});
+</script>
+</body>
+</html>
